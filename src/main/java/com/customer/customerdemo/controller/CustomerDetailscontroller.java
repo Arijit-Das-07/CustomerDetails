@@ -24,7 +24,7 @@ public class CustomerDetailscontroller {
 	        return new ResponseEntity<>(this.customerService.getById(id), HttpStatus.OK);
 	    }
 	    
-	 @PostMapping("/create")   
+	 @PostMapping("/add")   
 	 	public ResponseEntity<CustomerDetailsDto> saveTodo(@RequestBody CustomerDetailsDto cust) {
 		 return new ResponseEntity<>(this.customerService.createCustomer(cust),HttpStatus.CREATED);
 	    

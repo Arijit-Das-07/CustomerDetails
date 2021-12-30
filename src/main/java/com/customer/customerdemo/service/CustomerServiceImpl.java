@@ -6,9 +6,9 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.customer.customerdemo.dao.CustomerDetailsDao;
 import com.customer.customerdemo.dto.CustomerDetailsDto;
 import com.customer.customerdemo.entity.CustomerDetails;
-import com.customer.dao.CustomerDetailsDao;
 
 
 @Service
