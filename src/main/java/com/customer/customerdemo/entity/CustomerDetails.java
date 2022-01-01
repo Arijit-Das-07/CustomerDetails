@@ -19,7 +19,7 @@ public class CustomerDetails {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(nullable= false,name="id")
+	@Column(nullable= false,unique=true,name="id")
 	private Long id;
 	
 	@Column(nullable = false,name="cust_name")
@@ -31,10 +31,10 @@ public class CustomerDetails {
 	@Column(nullable = false,name="cust_con_person")
 	private String cust_con_person;
 	
-	@Column(nullable = false,name="cust_mail_id")
+	@Column(nullable = false,unique=true,name="cust_mail_id")
 	private String cust_mail_id;
 	
-	@Column(nullable = false,name="cust_cont_no")
+	@Column(nullable = false,unique=true,name="cust_cont_no")
 	private String cust_cont_no;
 	
 	@Column(nullable = false,name="trans_mail_id")
