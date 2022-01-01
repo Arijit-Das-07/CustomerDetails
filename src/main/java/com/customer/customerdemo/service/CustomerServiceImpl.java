@@ -35,5 +35,13 @@ public class CustomerServiceImpl implements CustomerService {
 		BeanUtils.copyProperties(custDetails, custDto);
 		return custDto;		
 	}
+
+	@Override
+	public CustomerDetailsDto getByMailId(String mailId) {
+		CustomerDetails custDetails = customerDetailsDao.findByCustMailId(mailId);
+		CustomerDetailsDto custDto = new CustomerDetailsDto();
+		BeanUtils.copyProperties(custDetails, custDto);
+		return custDto;
+	}
 	
 }

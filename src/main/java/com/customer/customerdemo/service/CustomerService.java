@@ -11,4 +11,6 @@ public interface CustomerService {
 
 	CustomerDetailsDto createCustomer(CustomerDetailsDto cust);
 
+	CustomerDetailsDto getByMailId(String mailId);
+
 }

@@ -17,20 +17,38 @@ public class CustomerDetailscontroller {
 
 	@Autowired
 	private CustomerService customerService;
-	
-	
-	 @GetMapping("getbyid/{id}")
-	    public ResponseEntity<CustomerDetailsDto> getTodo( @PathVariable Long id) {
-	        return new ResponseEntity<>(this.customerService.getById(id), HttpStatus.OK);
-	    }
-	    
-	 @PostMapping("/add")   
-	 	public ResponseEntity<CustomerDetailsDto> saveTodo(@RequestBody CustomerDetailsDto cust) {
-		 return new ResponseEntity<>(this.customerService.createCustomer(cust),HttpStatus.CREATED);
-	    
-	    }
-	
-	
-	
-	
+
+	@GetMapping("getbyid/{id}")
+	public ResponseEntity<CustomerDetailsDto> getCustomer(@PathVariable Long id) {
+		try {
+			return new ResponseEntity<>(this.customerService.getById(id), HttpStatus.OK);
+		} catch (Exception e) {
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		}
+	}
+
+	@GetMapping("getbymailid/{mailId}")
+	public ResponseEntity<CustomerDetailsDto> getCustomerByemail(@PathVariable String mailId) {
+		try {
+			return new ResponseEntity<>(this.customerService.getByMailId(mailId), HttpStatus.OK);
+		}
+
+		catch (Exception e) {
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		}
+	}
+
+	@PostMapping("/add")
+	public ResponseEntity<CustomerDetailsDto> saveCustomer(@RequestBody CustomerDetailsDto cust) {
+
+		try {
+			return new ResponseEntity<>(this.customerService.createCustomer(cust), HttpStatus.CREATED);
+
+		}
+
+		catch (Exception e) {
+			return new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
+		}
+	}
+
 }
