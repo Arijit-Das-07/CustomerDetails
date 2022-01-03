@@ -1,15 +1,17 @@
 package com.customer.customerdemo.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.customer.customerdemo.dto.CustomerDetailsDto;
+import com.customer.customerdemo.entity.CustomerDetails;
 import com.customer.customerdemo.service.CustomerService;
 
 @RestController
@@ -26,7 +28,17 @@ public class CustomerDetailscontroller {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
 	}
+	
+	@GetMapping("getallcustomer")
+	public ResponseEntity<List <CustomerDetails>> getCustomer() {
+		try {
+			return new ResponseEntity<>(this.customerService.getall(), HttpStatus.OK);
+		} catch (Exception e) {
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		}
+	}
 
+	
 	@GetMapping("getbymailid/{mailId}")
 	public ResponseEntity<CustomerDetailsDto> getCustomerByemail(@PathVariable String mailId) {
 		try {
@@ -39,7 +51,7 @@ public class CustomerDetailscontroller {
 	}
 
 	@PostMapping("/add")
-	public ResponseEntity<CustomerDetailsDto> saveCustomer(@RequestBody CustomerDetailsDto cust) {
+	public ResponseEntity<CustomerDetailsDto> saveCustomer( CustomerDetailsDto cust) {
 
 		try {
 			return new ResponseEntity<>(this.customerService.createCustomer(cust), HttpStatus.CREATED);

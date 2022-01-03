@@ -43,7 +43,7 @@ public class CustomerDetails {
 	@Column(nullable = false,name="trans_name")
 	private String trans_name;
 	
-	@Column(nullable = false,name="status")
+	@Column(name="status")
 	private String status;
 	
 	@Column(name="is_deleted",insertable=false)

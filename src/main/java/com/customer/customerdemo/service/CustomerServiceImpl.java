@@ -1,5 +1,6 @@
 package com.customer.customerdemo.service;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.BeanUtils;
@@ -42,6 +43,11 @@ public class CustomerServiceImpl implements CustomerService {
 		CustomerDetailsDto custDto = new CustomerDetailsDto();
 		BeanUtils.copyProperties(custDetails, custDto);
 		return custDto;
+	}
+
+	@Override
+	public List<CustomerDetails> getall() {
+		return customerDetailsDao.findAll();
 	}
 	
 }

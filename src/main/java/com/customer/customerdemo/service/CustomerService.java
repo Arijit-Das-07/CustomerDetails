@@ -1,8 +1,11 @@
 package com.customer.customerdemo.service;
 
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
 import com.customer.customerdemo.dto.CustomerDetailsDto;
+import com.customer.customerdemo.entity.CustomerDetails;
 
 @Service
 public interface CustomerService {
@@ -12,5 +15,7 @@ public interface CustomerService {
 	CustomerDetailsDto createCustomer(CustomerDetailsDto cust);
 
 	CustomerDetailsDto getByMailId(String mailId);
+
+	List <CustomerDetails> getall();
 
 }
