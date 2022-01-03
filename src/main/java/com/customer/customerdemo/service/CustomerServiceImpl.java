@@ -49,5 +49,18 @@ public class CustomerServiceImpl implements CustomerService {
 	public List<CustomerDetails> getall() {
 		return customerDetailsDao.findAll();
 	}
+
+	@Override
+	public Boolean delete(Long id) {
+		Boolean r;
+		try {
+			customerDetailsDao.deleteById(id);
+			r=true;
+		}catch (Exception e) {
+			r=false;
+		}
+		return r;
+				
+	}
 	
 }

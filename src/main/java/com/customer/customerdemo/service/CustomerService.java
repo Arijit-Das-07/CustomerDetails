@@ -18,4 +18,6 @@ public interface CustomerService {
 
 	List <CustomerDetails> getall();
 
+	Boolean delete(Long id);
+
 }

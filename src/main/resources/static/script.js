@@ -34,7 +34,7 @@ $(document).ready(function(){
 				var html;
                 $(data).each(function(i, customer){
 					html +="<tr>";
-					html +="<td>"+customer.id+"</td>";  
+					html +="<td >"+customer.id+"</td>";  
                     html +="<td>"+customer.cust_name+"</td>";
                     html +="<td>"+customer.site_loc+"</td>";
                     html +="<td>"+customer.cust_con_person+"</td>";
@@ -43,17 +43,24 @@ $(document).ready(function(){
                     html +="<td>"+customer.trans_mail_id+"</td>";
                     html +="<td>"+customer.trans_name+"</td>";
                     html +="<td>"+customer.status+"</td>";
-					html +="<td>"+"Delete"+"</td>";
+					html +="<td>"+`<i class="fas fa-trash deleteTut" data-tutid="`+customer.id+`"></i> `;
                     html +="</tr>";
                     });
                 $('#customersBody').html(html);
                 $('#customersTable').DataTable();
+                loadButtons()
                 }
         });
         
     }
     
-
+function loadButtons() {
+        $(".deleteTut").click(function(e){
+            deleteTutorial($($(this)[0]).data("tutid"));
+            e.preventDefault();
+        })
+    }
+    
 
     
     $("#submitcustomer").on("click", function(e) {
@@ -88,9 +95,21 @@ $(document).ready(function(){
             }
         });
     }
-    
- 
-        
+    $(".data-tutid").on("click", function(e) {
+            deleteTutorial($($(this)[0]).data("id"));
+            e.preventDefault();
+        });
+    function deleteTutorial(id){
+     $.ajax({
+        url: 'http://localhost:8080/remove/'+id,
+        method: 'DELETE',
+        dataType: 'json',
+        success: function(data) {
+            console.log(data);
+            getcustomers();
+        }
+    });
+  }    
 
     
 });
