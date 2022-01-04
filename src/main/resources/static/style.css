@@ -1,6 +1,6 @@
 body {
-  background: #2c3e50;
   color: black;
+  background-color:cadetblue;
   font-family: verdana;
 }
 input, .modal {
@@ -10,4 +10,4 @@ table.dataTable tbody th,
 table.dataTable tbody td,
 table.dataTable.display tbody td {
 	color: black!important;
-	}
+}

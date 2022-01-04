@@ -52,7 +52,7 @@ public class CustomerDetailscontroller {
 	}
 
 	@PostMapping("/add")
-	public ResponseEntity<CustomerDetailsDto> saveCustomer( CustomerDetailsDto cust) {
+	public ResponseEntity<CustomerDetailsDto> saveCustomer(CustomerDetailsDto cust) {
 
 		try {
 			return new ResponseEntity<>(this.customerService.createCustomer(cust), HttpStatus.CREATED);
