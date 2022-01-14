@@ -103,8 +103,7 @@ $(document).ready(function() {
 			url: 'http://localhost:8080/remove/' + id,
 			method: 'DELETE',
 			dataType: 'json',
-			success: function(data) {
-				console.log(data);
+			success: function() {
 				getcustomers();
 			}
 		});
